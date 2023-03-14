@@ -1,0 +1,678 @@
+.nav {
+    background-color: var(--moderateBlue);
+    width: 100%;
+    max-width: 100vw;
+    position: sticky;
+    display: flex;
+    height: 50px;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    z-index: 1;
+}
+
+#deleteLocalStorage {
+    text-align: center;
+    background-color: var(--moderateBlue);
+    width: 200px;
+    font-size: 14px;
+    color: white;
+    border-right: 2px solid white;
+}
+
+#deleteLocalStorage:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.logged {
+    display: flex;
+    margin-left: 20px;
+    gap: 10px;
+    color: white;
+}
+
+.logged > p {
+    align-self: center;
+}
+
+.dropdown {
+    margin-left: auto;
+    position: relative;
+    min-width: 200px;
+    right: 0;
+}
+
+.login {
+    color: white;
+}
+
+.login:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.arrow {
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-135deg);
+
+}
+
+.arrowAfter {
+    border-width: 2px 0 0 2px;
+}
+
+.dropdownContent {
+    color: white;
+    background-color: var(--moderateBlue);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 20px;
+}
+
+.dropdownContent > div {
+    padding: 10px 20px;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+}
+
+.dropdownContent > div > p {
+    margin-left: 5px;
+}
+
+.dropdownContent > div > img {
+    width: 32px;
+    height: 32px;
+}
+
+.dropdownContent > div:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    background-color: var(--lightGrayishBlue);
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --moderateBlue: hsl(238, 40%, 52%);
+    --softRed: hsl(358, 79%, 66%);
+    --lightGrayishBlue: hsl(239, 57%, 85%);
+    --paleRed: hsl(357, 100%, 86%);
+    --darkBlue: hsl(212, 24%, 26%);
+    --grayishBlue: hsl(211, 10%, 45%);
+    --lightGray: hsl(223, 19%, 93%);
+    --veryLightGray: hsl(228, 33%, 97%);
+}
+
+html {
+    background-color: var(--veryLightGray);
+}
+
+body {
+    color: var(--grayishBlue);
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+    position: relative;
+}
+
+main {
+    width: 80%;
+    max-width: 730px;
+    margin: 5% auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Main comments */
+
+.commentWithReplies {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.memberWrapper {
+    position: relative;
+    background-color: white;
+    border-radius: 15px;
+    padding: 24px;
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.scoreWrapper {
+    background-color: var(--veryLightGray);
+    height: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    width: 10%;
+    max-width: 40px;
+}
+
+.minus {
+    padding: 4px 0;
+}
+
+.scoreWrapper > img:hover {
+    filter: invert(39%) sepia(36%) saturate(1320%) hue-rotate(203deg) brightness(82%) contrast(85%);
+    cursor: pointer;
+}
+
+.scoreSelected {
+    filter: invert(39%) sepia(36%) saturate(1320%) hue-rotate(203deg) brightness(82%) contrast(85%);
+}
+
+.scoreNumber {
+    margin: 10px 0;
+    color: var(--moderateBlue);
+    font-weight: 500;
+}
+
+.rightSideWrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.rightSideTopWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.personalInfoWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.personalInfoWrapper > img {
+    width: 32px;
+    height: 32px;
+}
+
+.username {
+    color: var(--darkBlue);
+    font-weight: 500;
+}
+
+.replyWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.replyWrapper > img {
+    width: 14px;
+    height: 13px;
+}
+
+.replyText {
+    color: var(--moderateBlue);
+    font-weight: 500;
+}
+
+.replyWrapper:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.comment {
+    word-break: break-word;
+}
+
+
+/* Sub comment */
+
+.memberWrapper > img {
+    width: 40px;
+    height: 40px;
+}
+
+.allAnswersWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-self: end;
+    right: 0;
+    position: relative;
+}
+
+.subCommentsLine {
+    position: absolute;
+    border-left: 2px solid var(--lightGray);
+    height: 100%;
+    left: -5%;
+}
+
+.usernameInReply {
+    color: var(--moderateBlue);
+    font-weight: 500;
+}
+
+
+/* Reply box */
+
+.replyInput {
+    flex-grow: 1;
+    caret: black;
+    width: 100%;
+    height: 100%;
+    min-height: 100px;
+    color: var(--darkBlue);
+    border: 2px solid var(--lightGray);
+    border-radius: 15px;
+    padding: 12px 24px;
+    outline: none;
+    word-break: break-word;
+}
+
+.replyInput:hover {
+    cursor: pointer;
+    border-color: var(--moderateBlue);
+}
+
+.replyInput:focus {
+    border: 2px solid var(--moderateBlue);
+}
+
+.userReplyButtonsWrapper {
+    color: white;
+    font-weight: 500;
+    width: 20%;
+    max-width: 200px;
+    font-size: min(1.5vw, 15px);
+}
+
+.userReplyButton {
+    background-color: var(--moderateBlue);
+    padding: 10% 20%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.userReplyButton:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.userCancelButton {
+    margin-top: 10px;
+    background-color: var(--softRed);
+    border-radius: 10px;
+    padding: 10% 20%;
+    text-align: center;
+}
+
+.userCancelButton:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+/* user comment */
+
+.userCustomizeWrapper {
+    display: flex;
+    gap: 20px;
+    font-weight: 500;
+}
+
+.deleteWrapper {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.deleteWrapper > img {
+    width: 12px;
+    height: 14px;
+}
+
+.deleteText {
+    color: var(--softRed);
+}
+
+.deleteWrapper:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.editWrapper {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.editWrapper > img {
+    width: 14px;
+    height: 14px;
+}
+
+.editText {
+    color: var(--moderateBlue);
+}
+
+.editWrapper:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.you {
+    padding: 2px 5px;
+    background-color: var(--moderateBlue);
+    color: white;
+    font-weight: 500;
+    font-size: 13px;
+    border-radius: 2px;
+    text-align: center;
+}
+
+/* edit box */
+
+.updateButton {
+    background-color: var(--moderateBlue);
+    border-radius: 10px;
+    font-weight: 500;
+    color: white;
+    font-size: min(2vw, 16px);
+    float: right;
+    padding: 3% 5%;
+    margin-top: 10px;
+}
+
+.updateButton:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+/* user new comment box */
+
+.replyInput[aria-placeholder]:empty::before {
+    content: attr(aria-placeholder);
+    color: var(--grayishBlue);
+}
+
+.userSendButton {
+    background-color: var(--moderateBlue);
+    border-radius: 10px;
+    font-weight: 500;
+    color: white;
+    font-size: min(2vw, 16px);
+    padding: 2% 4%;
+    height: 1%;
+}
+
+.userSendButton:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.popup {
+    visibility: hidden;
+    position: absolute;
+    right: 0;
+    top: -5%;
+    background-color: var(--softRed);
+    color: white;
+    font-size: min(2vw, 12px);
+    padding: 4px 7px;
+    border-radius: 15px;
+}
+
+.popup::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--softRed) transparent transparent transparent;
+}
+
+.showPopup {
+    visibility: visible;
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.popup:hover {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+/* DELETE POPUP */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.deletePopup {
+    z-index: 1;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 3%;
+}
+
+.deletePopup > h1 {
+    color: var(--darkBlue);
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.deletePopup > p {
+    margin-bottom: 20px;
+}
+
+.deletePopupButtonsWrapper {
+    display: flex;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    width: 100%;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.deletePopupNoButton {
+    background-color: var(--grayishBlue);
+    padding: 3% 5%;
+    flex-grow: 1;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.deletePopupYesButton {
+    background-color: var(--softRed);
+    padding: 3% 5%;
+    flex-grow: 1;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.deletePopupYesButton:hover, .deletePopupNoButton:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 703px) {
+
+    .personalInfoWrapper {
+        font-size: 12px;
+    }
+
+    .userCustomizeWrapper {
+        gap: 5px;
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    main {
+        width: 90%;
+    }
+
+    .memberWrapper {
+        padding-bottom: 60px;
+    }
+
+    .replyWrapper {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 20px;
+
+    }
+
+    .userCustomizeWrapper {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 20px;
+        gap: 10px;
+        font-size: 14px;
+    }
+
+    .scoreWrapper {
+        position: absolute;
+        display: flex;
+        bottom: 0;
+        max-width: 100%;
+        width: 90px;
+        height: 30px;
+        justify-content: space-between;
+        align-items: center;
+        margin: 15px 0;
+    }
+
+    .plus {
+        height: 11px;
+        width: 11px;
+    }
+
+    .minus {
+        height: 11px;
+        width: 11px;
+    }
+
+    .comment {
+        margin-bottom: 10px;
+    }
+
+    .personalInfoWrapper {
+        font-size: 16px;
+    }
+
+    .userReplyButtonsWrapper {
+        position: absolute;
+        display: flex;
+        gap: 5px;
+        bottom: 0;
+        right: 110px;
+        margin: 10px;
+        font-size: 10px;
+    }
+
+    .userReplyButtonsWrapper > div {
+        padding: 10px 15px;
+        min-width: 75px;
+    }
+
+    .userReplyButton {
+        margin-top: 10px;
+    }
+
+    .replyInput {
+        padding: 10px;
+    }
+
+    .memberWrapper > img {
+        position: absolute;
+        bottom: 10px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .userSendButton {
+        position: absolute;
+        bottom: 10px;
+        right: 25px;
+        font-size: 12px;
+        padding: 10px 15px;
+        height: 32px;
+        width: 100px;
+        text-align: center;
+    }
+
+    .nav {
+        font-size: 12px;
+    }
+
+    #deleteLocalStorage {
+        width: 100px;
+        font-size: 10px;
+    }
+
+    .logged {
+        margin-left: 10px;
+    }
+
+    .dropdown {
+        min-width: 100px;
+    }
+
+    .dropdownContent {
+        padding-top: 25px;
+    }
+
+    .dropdownContent > div {
+        padding: 10px;
+        border: 1px solid white;
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdownContent > div > img {
+        width: 22px;
+        height: 22px;
+    }
+
+
+
+
+}
+
